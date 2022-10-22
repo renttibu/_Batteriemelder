@@ -6810,10 +6810,10 @@ trait BATM_Config
         //Daily notification
 
         //Update overdue
-        $updateOverdueVariables = [];
+        $dailyUpdateOverdueVariables = [];
         $criticalVariables = json_decode($this->ReadAttributeString('DailyNotificationListDeviceStatusUpdateOverdue'), true);
         foreach ($criticalVariables as $variable) {
-            $updateOverdueVariables[] = [
+            $dailyUpdateOverdueVariables[] = [
                 'ID'        => $variable['ID'],
                 'Name'      => $variable['Name'],
                 'Comment'   => $variable['Comment'],
@@ -6822,10 +6822,10 @@ trait BATM_Config
         }
 
         //Low battery
-        $lowBatteryVariables = [];
+        $dailyLowBatteryVariables = [];
         $criticalVariables = json_decode($this->ReadAttributeString('DailyNotificationListDeviceStatusLowBattery'), true);
         foreach ($criticalVariables as $variable) {
-            $lowBatteryVariables[] = [
+            $dailyLowBatteryVariables[] = [
                 'ID'        => $variable['ID'],
                 'Name'      => $variable['Name'],
                 'Comment'   => $variable['Comment'],
@@ -6874,7 +6874,7 @@ trait BATM_Config
                             'width'   => '160px'
                         ]
                     ],
-                    'values' => $updateOverdueVariables
+                    'values' => $dailyUpdateOverdueVariables
                 ],
                 [
                     'type'    => 'PopupButton',
@@ -6925,7 +6925,7 @@ trait BATM_Config
                             'width'   => '160px'
                         ]
                     ],
-                    'values' => $lowBatteryVariables
+                    'values' => $dailyLowBatteryVariables
                 ],
                 [
                     'type'    => 'PopupButton',
@@ -6965,10 +6965,10 @@ trait BATM_Config
         //Weekly notification
 
         //Update overdue
-        $updateOverdueVariables = [];
+        $weeklyUpdateOverdueVariables = [];
         $criticalVariables = json_decode($this->ReadAttributeString('WeeklyNotificationListDeviceStatusUpdateOverdue'), true);
         foreach ($criticalVariables as $variable) {
-            $updateOverdueVariables[] = [
+            $weeklyUpdateOverdueVariables[] = [
                 'ID'        => $variable['ID'],
                 'Name'      => $variable['Name'],
                 'Comment'   => $variable['Comment'],
@@ -6977,10 +6977,10 @@ trait BATM_Config
         }
 
         //Low battery
-        $lowBatteryVariables = [];
+        $weeklyLowBatteryVariables = [];
         $criticalVariables = json_decode($this->ReadAttributeString('WeeklyNotificationListDeviceStatusLowBattery'), true);
         foreach ($criticalVariables as $variable) {
-            $lowBatteryVariables[] = [
+            $weeklyLowBatteryVariables[] = [
                 'ID'        => $variable['ID'],
                 'Name'      => $variable['Name'],
                 'Comment'   => $variable['Comment'],
@@ -7029,7 +7029,7 @@ trait BATM_Config
                             'width'   => '160px'
                         ]
                     ],
-                    'values' => $updateOverdueVariables
+                    'values' => $weeklyUpdateOverdueVariables
                 ],
                 [
                     'type'    => 'PopupButton',
@@ -7080,7 +7080,7 @@ trait BATM_Config
                             'width'   => '160px'
                         ]
                     ],
-                    'values' => $lowBatteryVariables
+                    'values' => $weeklyLowBatteryVariables
                 ],
                 [
                     'type'    => 'PopupButton',
