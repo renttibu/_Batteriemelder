@@ -42,6 +42,12 @@ trait BATM_Reports
                 //Check weekday
                 $weekday = date('w');
                 switch ($weekday) {
+                    case 0: //Sunday
+                        if ($this->ReadPropertyBoolean('DailyNotificationSunday')) {
+                            $execute = true;
+                        }
+                        break;
+
                     case 1: //Monday
                         if ($this->ReadPropertyBoolean('DailyNotificationMonday')) {
                             $execute = true;
@@ -74,12 +80,6 @@ trait BATM_Reports
 
                     case 6: //Saturday
                         if ($this->ReadPropertyBoolean('DailyNotificationSaturday')) {
-                            $execute = true;
-                        }
-                        break;
-
-                    case 7: //Sunday
-                        if ($this->ReadPropertyBoolean('DailyNotificationSunday')) {
                             $execute = true;
                         }
                         break;
@@ -317,12 +317,12 @@ trait BATM_Reports
                     }
                     @BN_SendMailNotification($notificationID, $subject, $messageText);
                 }
+                //Reset values
+                if ($ResetCriticalVariables) {
+                    $this->ResetAttribute('DailyNotificationListDeviceStatusLowBattery');
+                    $this->ResetAttribute('DailyNotificationListDeviceStatusUpdateOverdue');
+                }
             }
-        }
-        //Reset values
-        if ($ResetCriticalVariables) {
-            $this->ResetAttribute('DailyNotificationListDeviceStatusLowBattery');
-            $this->ResetAttribute('DailyNotificationListDeviceStatusUpdateOverdue');
         }
     }
 
