@@ -600,12 +600,12 @@ trait BATM_Reports
                     $this->SendDebug(__FUNCTION__, 'Nachrichtentext: ' . $messageText, 0);
                     @BN_SendMailNotification($notificationID, $subject, $messageText);
                 }
+                //Reset values
+                if ($ResetCriticalVariables) {
+                    $this->ResetAttribute('WeeklyNotificationListDeviceStatusLowBattery');
+                    $this->ResetAttribute('WeeklyNotificationListDeviceStatusUpdateOverdue');
+                }
             }
-        }
-        //Reset values
-        if ($ResetCriticalVariables) {
-            $this->ResetAttribute('WeeklyNotificationListDeviceStatusLowBattery');
-            $this->ResetAttribute('WeeklyNotificationListDeviceStatusUpdateOverdue');
         }
     }
 
